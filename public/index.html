@@ -1,124 +1,353 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-		/>
-		<title>Ultraviolet | Sophisticated Web Proxy</title>
-		<meta
-			name="description"
-			content="Ultraviolet is a highly sophisticated proxy used for evading internet censorship or accessing websites in a controlled sandbox using the power of service-workers. Unblock sites today!"
-		/>
-		<meta
-			name="keywords"
-			content="proxy, web proxy, ultraviolet, service workers, unblock websites, unblock chromebook, free web proxy, proxy list, proxy sites, un block chromebook, online proxy, proxy server, proxysite, proxy youtube, bypass securly, bypass iboss, bypass lightspeed filter, holy unblocker, chromebooks, titanium network, unblock youtube, youtube proxy, unblocked youtube, youtube unblocked"
-		/>
-		<meta
-			name="theme-color"
-			media="(prefers-color-scheme: dark)"
-			content="#434c5e"
-		/>
-		<meta name="googlebot" content="index, follow, snippet" />
-		<link rel="shortcut icon" content="favicon.ico" />
-		<link rel="stylesheet" href="index.css" />
-		
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>(function(s){s.dataset.zone='10623491',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    <script>(function(s){s.dataset.zone='10623490',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Algebra Quiz II</title>
+   
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap");
+        :root {
+            --bg-black: #000000;
+            --text-white: #ffffff;
+            --gray-dim: #222222;
+            --gray-med: #666666;
+            --glass: rgba(10, 10, 10, 0.98);
+            --border: rgba(255, 255, 255, 0.15);
+        }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background-color: var(--bg-black); font-family: "Inter", sans-serif; color: var(--text-white); }
+        /* --- NAVIGATION BAR --- */
+        #nav-container {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 9999999999;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+        .nav-controls { height: 50px; display: flex; align-items: center; padding: 0 15px; gap: 8px; }
+        .tab-bar {
+            height: 35px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            gap: 5px;
+            background: rgba(0,0,0,0.4);
+            overflow-x: auto;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .nav-btn { background: transparent; border: none; color: white; padding: 8px; cursor: pointer; display: flex; align-items: center; border-radius: 6px; transition: 0.2s; }
+        .nav-btn:hover { background: rgba(255,255,255,0.1); }
+        .nav-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+        #nav-url { flex-grow: 1; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: white; padding: 8px 15px; font-size: 0.85rem; border-radius: 6px; outline: none; }
+        .tab {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            color: var(--gray-med);
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .tab.active { background: rgba(255,255,255,0.15); color: white; border-color: white; }
+        .tab-close { opacity: 0.5; font-size: 16px; margin-left: 5px; }
+        .tab-close:hover { color: #ff4d4d; }
+        /* --- PROXY FRAMES --- */
+        .proxy-frame {
+            position: fixed;
+            top: 85px;
+            left: 0;
+            width: 100vw;
+            height: calc(100vh - 85px);
+            border: none;
+            background: #000;
+            display: none;
+            z-index: 9999999;
+        }
+        .proxy-frame.active { display: block !important; }
+        /* --- MAIN UI --- */
+        .centered-wrapper { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; z-index: 10; padding-top: 85px; }
+        .logo-wrapper h1 { font-size: 4rem; font-weight: 900; letter-spacing: -2px; text-transform: uppercase; margin-bottom: 20px; }
+        .logo-wrapper h1 span { font-weight: 100; color: var(--gray-med); margin-left: 10px; letter-spacing: 5px; }
+       
+        /* --- CREDITS FOOTER --- */
+        .footer-credits {
+            position: absolute;
+            bottom: 30px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--gray-med);
+            letter-spacing: 1px;
+            z-index: 20;
+        }
+        .footer-credits a {
+            color: var(--text-white);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            font-weight: 700;
+            margin-left: 5px;
+            transition: 0.3s;
+        }
+        .footer-credits a:hover {
+            color: #ff4d4d;
+            text-shadow: 0 0 10px rgba(255, 77, 77, 0.4);
+        }
+        #constellation-canvas { position: fixed; inset: 0; z-index: 1; opacity: 0.6; pointer-events: none; }
+    </style>
+    <!-- uv static bundle - grab from https://github.com/TheTIW/UV-Static or titanium uv-app and copy uv/ folder -->
+    <script src="/uv/uv.bundle.js" defer></script>
+    <script src="/uv/uv.config.js" defer></script>
+    <script src="register-sw.js" defer></script> <!-- keep or adapt your sw reg -->
+    <script src="search.js" defer></script> <!-- assume this has your search() func -->
+</head>
+<body>
+    <canvas id="constellation-canvas"></canvas>
+    <div id="nav-container">
+        <div class="nav-controls">
+            <button class="nav-btn" onclick="controlFrame('back')">
+                <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="nav-btn" onclick="controlFrame('forward')">
+                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+            <button class="nav-btn" onclick="controlFrame('reload')">
+                <svg viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+            </button>
+           
+            <input type="text" id="nav-url" placeholder="Search or enter URL" autocomplete="off">
+           
+            <button class="nav-btn" onclick="addTab()">
+                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+            <button class="nav-btn" onclick="location.reload()">
+                <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </button>
+        </div>
+        <div class="tab-bar" id="tab-bar"></div>
+    </div>
+    <main class="centered-wrapper" id="main-ui">
+        <div class="logo-wrapper"><h1>NikeNetwork<span>V2</span></h1></div>
+        <form id="uv-form" style="width:100%; max-width:500px;">
+            <input id="uv-search-engine" value="https://duckduckgo.com/?q=%s" type="hidden" />
+            <input id="uv-address" type="text" placeholder="Break from the chains of surveillance..." style="width:100%; height:55px; background:rgba(255,255,255,0.03); border:1px solid var(--border); color:white; padding:0 20px; text-align:center; outline:none; border-radius:8px;" autofocus autocomplete="off" />
+        </form>
+        <div class="footer-credits">
+            NikeNetwork by NikeGtag | <a href="https://securly.pages.dev" target="_blank" rel="noopener noreferrer">-> unblocked games <-</a>
+        </div>
+    </main>
+    <script>
+/* --- ACCESS CONTROL LIST --- */
+// your acl stays the same
+const ALLOWED_DOMAINS = [
+    'nikenetwork.koyeb.app',
+    'securly.pages.dev',
+    'mathfunn.vercel.app',
+    'nikehub.pages.dev',
+    'hideoutt.vercel.app',
+    'nike-network.vercel.app',
+    'homeworkbtw.pages.dev',
+    'ixlfun.pages.dev',
+    'nikenetwork.onrender.com',
+    'canvus.vercel.app',
+    'localhost',
+    'nikenetwork-production.up.railway.app'
+];
+function validateHost() {
+    const hostname = window.location.hostname;
+    const isAuthorized = ALLOWED_DOMAINS.some(domain =>
+        hostname === domain || hostname.endsWith('.' + domain)
+    );
+    let isIllegalFrame = false;
+    if (window.self !== window.top) {
+        const referrer = document.referrer;
+        if (!referrer) {
+            isIllegalFrame = true;
+        } else {
+            try {
+                const referrerHost = new URL(referrer).hostname;
+                const isReferrerWhitelisted = ALLOWED_DOMAINS.some(domain =>
+                    referrerHost === domain || referrerHost.endsWith('.' + domain)
+                );
+                if (!isReferrerWhitelisted) isIllegalFrame = true;
+            } catch (e) {
+                isIllegalFrame = true;
+            }
+        }
+    }
+    if (!isAuthorized || isIllegalFrame) {
+        window.stop();
+        document.body.innerHTML = `...`; // your restricted html stays
+        throw new Error("Security Violation: Unauthorized Host or Frame detected.");
+    }
+}
+validateHost();
 
-		<script src="baremux/index.js"></script>
-		<script src="uv/uv.bundle.js"></script>
-		<script src="uv/uv.config.js"></script>
+/* --- PROXY LOGIC UV --- */
+let tabs = [];
+let activeTabId = null;
+let uv;
 
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "FAQPage",
-				"mainEntity": [
-					{
-						"@type": "Question",
-						"name": "What is Ultraviolet (Web Proxy)?",
-						"acceptedAnswer": {
-							"@type": "Answer",
-							"text": "Highly sophisticated proxy used for evading internet censorship or accessing websites in a controlled sandbox using the power of service-workers and more!"
-						}
-					},
-					{
-						"@type": "Question",
-						"name": "How do I unblock sites using Ultraviolet?",
-						"acceptedAnswer": {
-							"@type": "Answer",
-							"text": "Simply head to an official site featuring Ultraviolet such as Holy Unblocker or Incognito! You can also self-host Ultraviolet on your own web server for maximum privacy."
-						}
-					},
-					{
-						"@type": "Question",
-						"name": "What if Ultraviolet is blocked or not working?",
-						"acceptedAnswer": {
-							"@type": "Answer",
-							"text": "Join the Titanium Network Discord at discord.gg/unblock!"
-						}
-					}
-				]
-			}
-		</script>
-	</head>
+window.addEventListener('load', async () => {
+    // wait for uv bundle to load
+    if (!window.Ultraviolet) {
+        console.error("uv.bundle.js not loaded");
+        return;
+    }
+    uv = new Ultraviolet({
+        prefix: '/service/', // or '/uv/service/' depending on your uv.config
+        bare: 'https://bare.example.com/bare/', // CHANGE THIS to a working public bare v3+ or your own
+        encodeUrl: Ultraviolet.codec.xor, // or base64 etc
+        handler: '/uv/uv.handler.js',
+        client: '/uv/uv.client.js',
+        bundle: '/uv/uv.bundle.js',
+        config: '/uv/uv.config.js',
+        sw: '/uv/sw.js' // if needed
+    });
+    try {
+        await uv.registerSW(); // registers the service worker
+    } catch (e) {
+        console.error("uv sw register fail", e);
+    }
+    document.getElementById("uv-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        launchProxy(document.getElementById("uv-address").value);
+    });
+    document.getElementById("nav-url").addEventListener("keydown", (e) => {
+        if(e.key === "Enter") launchProxy(e.target.value);
+    });
+});
 
-	<body>
-		<div
-			title="Ultraviolet Logo"
-			class="flex-center logo-wrapper header-center"
-		>
-			<img class="logo" src="uv.png" alt="Ultraviolet" />
-			<h1>Ultraviolet | TN</h1>
-		</div>
-		<div class="flex-center desc left-margin">
-			<p>
-				Ultraviolet is highly sophisticated proxy used for evading internet
-				censorship.
-			</p>
-		</div>
+async function launchProxy(input) {
+    if (!input) return;
+    const url = search(input, document.getElementById("uv-search-engine").value); // assume search() from search.js
+    const encoded = uv.encodeUrl(url);
+    const proxyUrl = uv.prefix + encoded; // e.g. /service/https%3A%2F%2Fgoogle.com
 
-		<form id="uv-form" class="flex-center">
-			<input
-				id="uv-search-engine"
-				value="https://www.google.com/search?q=%s"
-				type="hidden"
-			/>
-			<input id="uv-address" type="text" placeholder="Search the web freely" />
-		</form>
-		<div class="desc left-margin">
-			<p id="uv-error"></p>
-			<pre id="uv-error-code"></pre>
-		</div>
-		<footer>
-			<div>
-				<a
-					title="The TitaniumNetwork GitHub organization"
-					href="https://github.com/titaniumnetwork-dev"
-					>TitaniumNetwork</a
-				>
-				<a title="The TitaniumNetwork Discord" href="https://discord.gg/unblock"
-					>Discord</a
-				>
-				<a
-					title="The TompHTTP GitHub organization"
-					href="https://github.com/tomphttp"
-					>TompHTTP</a
-				>
-				<a
-					title="The official deployment repository for Ultraviolet"
-					href="https://github.com/titaniumnetwork-dev/Ultraviolet-App"
-					>GitHub</a
-				>
-				<a title="License information" href="credits.html">Credits</a>
-			</div>
-			<div>
-				<span>Ultraviolet &copy; TN 2023</span>
-			</div>
-		</footer>
-		<iframe style="display: none" id="uv-frame"></iframe>
-		<script src="register-sw.js"></script>
-		<script src="search.js"></script>
-		<script src="index.js"></script>
-	</body>
+    const id = 'tab-' + Date.now();
+    const frame = document.createElement('iframe');
+    frame.id = 'frame-' + id;
+    frame.classList.add('proxy-frame');
+    frame.src = proxyUrl;
+    frame.sandbox = "allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-storage-access-by-user-activation";
+    document.body.appendChild(frame);
+
+    tabs.push({ id, url: proxyUrl, frame });
+    switchTab(id);
+    document.getElementById("main-ui").style.display = "none";
+}
+
+function switchTab(id) {
+    activeTabId = id;
+    document.querySelectorAll('.proxy-frame').forEach(f => f.classList.remove('active'));
+    const activeTab = tabs.find(t => t.id === id);
+    if (activeTab) {
+        document.getElementById('frame-' + id).classList.add('active');
+        document.getElementById("nav-url").value = activeTab.url; // or decode if you want original
+    }
+    renderTabs();
+}
+
+function renderTabs() {
+    const bar = document.getElementById("tab-bar");
+    bar.innerHTML = "";
+    tabs.forEach(t => {
+        const div = document.createElement("div");
+        div.className = `tab ${t.id === activeTabId ? 'active' : ''}`;
+        div.innerHTML = `<span>Page</span> <span class="tab-close" onclick="closeTab(event, '${t.id}')">×</span>`;
+        div.onclick = () => switchTab(t.id);
+        bar.appendChild(div);
+    });
+}
+
+window.closeTab = function(e, id) {
+    e.stopPropagation();
+    tabs = tabs.filter(t => t.id !== id);
+    document.getElementById('frame-' + id).remove();
+    if (tabs.length === 0) {
+        document.getElementById("main-ui").style.display = "flex";
+        activeTabId = null;
+    } else if (activeTabId === id) {
+        switchTab(tabs[tabs.length - 1].id);
+    }
+    renderTabs();
+};
+
+window.controlFrame = function(action) {
+    const current = tabs.find(t => t.id === activeTabId);
+    if (!current) return;
+    const frame = document.getElementById('frame-' + activeTabId);
+    if (action === 'back') frame.contentWindow.history.back();
+    if (action === 'forward') frame.contentWindow.history.forward();
+    if (action === 'reload') frame.contentWindow.location.reload();
+};
+
+window.addTab = function() {
+    document.getElementById("main-ui").style.display = "flex";
+    document.getElementById("uv-address").focus();
+};
+
+/* --- CONSTELLATION ANIMATION --- */
+// your constellation code stays exactly the same
+const canvas = document.getElementById('constellation-canvas');
+const ctx = canvas.getContext('2d');
+let points = [];
+const pointCount = 60;
+const maxDistance = 150;
+const speed = 0.7;
+function initConstellation() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    points = [];
+    for (let i = 0; i < pointCount; i++) {
+        points.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * speed,
+            vy: (Math.random() - 0.5) * speed,
+            radius: Math.random() * 1.5 + 0.5
+        });
+    }
+}
+function animateConstellation() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    points.forEach((p, i) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+        ctx.fill();
+        for (let j = i + 1; j < points.length; j++) {
+            const p2 = points[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < maxDistance) {
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.strokeStyle = `rgba(255, 255, 255, ${1 - dist / maxDistance - 0.2})`;
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+            }
+        }
+    });
+    requestAnimationFrame(animateConstellation);
+}
+window.addEventListener('resize', initConstellation);
+initConstellation();
+animateConstellation();
+    </script>
+</body>
 </html>
