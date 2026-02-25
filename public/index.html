@@ -103,11 +103,11 @@
         }
         #constellation-canvas { position: fixed; inset: 0; z-index: 1; opacity: 0.6; pointer-events: none; }
     </style>
-    <!-- uv static bundle - grab from https://github.com/TheTIW/UV-Static or titanium uv-app and copy uv/ folder -->
+    <!-- uv static bundle - copy from https://github.com/titaniumnetwork-dev/Ultraviolet-App or TheTIW/UV-Static uv/ folder to your repo root -->
     <script src="/uv/uv.bundle.js" defer></script>
     <script src="/uv/uv.config.js" defer></script>
-    <script src="register-sw.js" defer></script> <!-- keep or adapt your sw reg -->
-    <script src="search.js" defer></script> <!-- assume this has your search() func -->
+    <script src="register-sw.js" defer></script>
+    <script src="search.js" defer></script>
 </head>
 <body>
     <canvas id="constellation-canvas"></canvas>
@@ -136,111 +136,65 @@
     </div>
     <main class="centered-wrapper" id="main-ui">
         <div class="logo-wrapper"><h1>NikeNetwork<span>V2</span></h1></div>
-        <form id="uv-form" style="width:100%; max-width:500px;">
-            <input id="uv-search-engine" value="https://duckduckgo.com/?q=%s" type="hidden" />
-            <input id="uv-address" type="text" placeholder="Break from the chains of surveillance..." style="width:100%; height:55px; background:rgba(255,255,255,0.03); border:1px solid var(--border); color:white; padding:0 20px; text-align:center; outline:none; border-radius:8px;" autofocus autocomplete="off" />
+        <form id="proxy-form" style="width:100%; max-width:500px;">
+            <input id="proxy-search-engine" value="https://duckduckgo.com/?q=%s" type="hidden" />
+            <input id="proxy-address" type="text" placeholder="Break from the chains of surveillance..." style="width:100%; height:55px; background:rgba(255,255,255,0.03); border:1px solid var(--border); color:white; padding:0 20px; text-align:center; outline:none; border-radius:8px;" autofocus autocomplete="off" />
         </form>
         <div class="footer-credits">
             NikeNetwork by NikeGtag | <a href="https://securly.pages.dev" target="_blank" rel="noopener noreferrer">-> unblocked games <-</a>
         </div>
     </main>
     <script>
-/* --- ACCESS CONTROL LIST --- */
-// your acl stays the same
-const ALLOWED_DOMAINS = [
-    'nikenetwork.koyeb.app',
-    'securly.pages.dev',
-    'mathfunn.vercel.app',
-    'nikehub.pages.dev',
-    'hideoutt.vercel.app',
-    'nike-network.vercel.app',
-    'homeworkbtw.pages.dev',
-    'ixlfun.pages.dev',
-    'nikenetwork.onrender.com',
-    'canvus.vercel.app',
-    'localhost',
-    'nikenetwork-production.up.railway.app'
-];
-function validateHost() {
-    const hostname = window.location.hostname;
-    const isAuthorized = ALLOWED_DOMAINS.some(domain =>
-        hostname === domain || hostname.endsWith('.' + domain)
-    );
-    let isIllegalFrame = false;
-    if (window.self !== window.top) {
-        const referrer = document.referrer;
-        if (!referrer) {
-            isIllegalFrame = true;
-        } else {
-            try {
-                const referrerHost = new URL(referrer).hostname;
-                const isReferrerWhitelisted = ALLOWED_DOMAINS.some(domain =>
-                    referrerHost === domain || referrerHost.endsWith('.' + domain)
-                );
-                if (!isReferrerWhitelisted) isIllegalFrame = true;
-            } catch (e) {
-                isIllegalFrame = true;
-            }
-        }
-    }
-    if (!isAuthorized || isIllegalFrame) {
-        window.stop();
-        document.body.innerHTML = `...`; // your restricted html stays
-        throw new Error("Security Violation: Unauthorized Host or Frame detected.");
-    }
-}
-validateHost();
-
-/* --- PROXY LOGIC UV --- */
+/* --- PROXY LOGIC (UV-based for static compatibility) --- */
 let tabs = [];
 let activeTabId = null;
 let uv;
 
 window.addEventListener('load', async () => {
-    // wait for uv bundle to load
     if (!window.Ultraviolet) {
-        console.error("uv.bundle.js not loaded");
+        console.error("uv.bundle.js failed to load - check /uv/ folder in repo");
         return;
     }
     uv = new Ultraviolet({
-        prefix: '/service/', // or '/uv/service/' depending on your uv.config
-        bare: 'https://bare.example.com/bare/', // CHANGE THIS to a working public bare v3+ or your own
-        encodeUrl: Ultraviolet.codec.xor, // or base64 etc
+        prefix: '/service/',  // common uv prefix, adjust if your uv.config uses /uv/service/
+        bare: 'https://uv.bussin.app/bare/',  // fresh public bare 2026 example - swap if dead (find on proxy discords)
+        // alt: 'https://bare1.yourdomain.com/bare/' if self-hosted
+        encodeUrl: Ultraviolet.codec.xor,  // or .base64 for variety
         handler: '/uv/uv.handler.js',
         client: '/uv/uv.client.js',
         bundle: '/uv/uv.bundle.js',
         config: '/uv/uv.config.js',
-        sw: '/uv/sw.js' // if needed
+        sw: '/uv/sw.js'
     });
     try {
-        await uv.registerSW(); // registers the service worker
+        await uv.registerSW();
     } catch (e) {
-        console.error("uv sw register fail", e);
+        console.error("uv sw register failed", e);
     }
-    document.getElementById("uv-form").addEventListener("submit", (e) => {
+    document.getElementById("proxy-form").addEventListener("submit", (e) => {
         e.preventDefault();
-        launchProxy(document.getElementById("uv-address").value);
+        launchProxy(document.getElementById("proxy-address").value);
     });
     document.getElementById("nav-url").addEventListener("keydown", (e) => {
-        if(e.key === "Enter") launchProxy(e.target.value);
+        if (e.key === "Enter") launchProxy(e.target.value);
     });
 });
 
 async function launchProxy(input) {
     if (!input) return;
-    const url = search(input, document.getElementById("uv-search-engine").value); // assume search() from search.js
+    const url = search(input, document.getElementById("proxy-search-engine").value);
     const encoded = uv.encodeUrl(url);
-    const proxyUrl = uv.prefix + encoded; // e.g. /service/https%3A%2F%2Fgoogle.com
+    const proxyUrl = uv.prefix + encoded;
 
     const id = 'tab-' + Date.now();
     const frame = document.createElement('iframe');
     frame.id = 'frame-' + id;
     frame.classList.add('proxy-frame');
     frame.src = proxyUrl;
-    frame.sandbox = "allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-storage-access-by-user-activation";
+    frame.sandbox = "allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-storage-access-by-user-activation allow-popups-to-escape-sandbox";
     document.body.appendChild(frame);
 
-    tabs.push({ id, url: proxyUrl, frame });
+    tabs.push({ id, url: proxyUrl, originalUrl: url, frame });  // store both for nav display
     switchTab(id);
     document.getElementById("main-ui").style.display = "none";
 }
@@ -251,7 +205,8 @@ function switchTab(id) {
     const activeTab = tabs.find(t => t.id === id);
     if (activeTab) {
         document.getElementById('frame-' + id).classList.add('active');
-        document.getElementById("nav-url").value = activeTab.url; // or decode if you want original
+        // show original url in nav (decode if needed, uv has no built-in decode - add if you want)
+        document.getElementById("nav-url").value = activeTab.originalUrl || activeTab.url;
     }
     renderTabs();
 }
@@ -285,18 +240,19 @@ window.controlFrame = function(action) {
     const current = tabs.find(t => t.id === activeTabId);
     if (!current) return;
     const frame = document.getElementById('frame-' + activeTabId);
-    if (action === 'back') frame.contentWindow.history.back();
-    if (action === 'forward') frame.contentWindow.history.forward();
-    if (action === 'reload') frame.contentWindow.location.reload();
+    if (!frame) return;
+    const win = frame.contentWindow;
+    if (action === 'back') win.history.back();
+    if (action === 'forward') win.history.forward();
+    if (action === 'reload') win.location.reload();
 };
 
 window.addTab = function() {
     document.getElementById("main-ui").style.display = "flex";
-    document.getElementById("uv-address").focus();
+    document.getElementById("proxy-address").focus();
 };
 
 /* --- CONSTELLATION ANIMATION --- */
-// your constellation code stays exactly the same
 const canvas = document.getElementById('constellation-canvas');
 const ctx = canvas.getContext('2d');
 let points = [];
